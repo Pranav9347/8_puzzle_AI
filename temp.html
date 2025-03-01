@@ -1,0 +1,1393 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+	"http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+
+<HEAD>
+<TITLE>
+Tile game - Tile games - Tile puzzle - Tile puzzles - TilePuzzles.com
+</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="keywords" CONTENT="Tile game, Tile games, Tile puzzle, Tile puzzles, TilePuzzles.com">
+<META NAME="description" CONTENT="Tile Puzzles. A collection of traditional and original sliding tile puzzles.">
+<META NAME="Author" CONTENT="TilePuzzles.com Tile game">
+<META NAME="Copyright" CONTENT="&copy; 1999-2025&nbsp;OriginalGames.com">
+
+<meta name=viewport content="width=device-width, initial-scale=1">
+
+<LINK rel='stylesheet' type='text/css' href='infostyle.css?r=1'>
+<STYLE type="text/css">
+
+.subtitle
+{
+	font-size:24px;
+	color:#000040;
+}
+
+.subtitle
+{
+	display:none;
+}
+
+#leftmenuopen
+{
+	display:none;
+}
+#leftmenucollapsed
+{
+	display:block;
+}
+
+#addthisdiv
+{
+	display:none;
+	width:0px;
+}
+
+#left-column
+{
+	position:absolute;
+	top:163px;
+	left:12px;
+}
+.centered
+{
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+#container
+{
+	float:left;
+	width:100%;
+}
+
+#rect-ad
+{
+	width:320px;
+	height:50px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#right-column
+{
+	clear:left;
+	margin-left:auto;
+	margin-right:auto;
+	width:188px;
+}
+
+#middle-column
+{
+	float:left;
+	margin:0px 0px 0px 0px;
+	text-align:center;
+	min-height:0px;
+	padding-top:35px;
+}
+
+#info
+{
+	clear:left;
+	text-align:center;
+	margin:0px 20px 0px 20px;
+}
+
+
+@media all and (min-width:601px)
+{
+	/* for browsers bigger than 600 */
+	.subtitle
+	{
+		display:inline;
+	}
+
+	#addthisdiv
+	{
+		display:block;
+		width:220px;
+	}
+
+	#leftmenuopen
+	{
+		display:block;
+	}
+	#leftmenucollapsed
+	{
+		display:none;
+	}
+
+
+	#left-column
+	{
+		visibility:visible;
+		float:left;
+		width:188px;
+		margin-left:-100%;
+
+		position:static;
+		top:0px;
+		left:0px;
+	}
+
+	#right-column
+	{
+		clear:none;
+		float:left;
+		margin-left:0px;
+		width:188px;
+
+		margin-left:-100%;
+		margin-top:423px;
+	}
+
+	#middle-column
+	{
+		float:right;
+		margin:0px 0px 0px 198px;
+		text-align:center;
+		min-height:0px;
+		padding-top:0px;
+	}
+
+	#info
+	{
+		clear:left;
+		text-align:center;
+		margin:0px 20px 0px 198px;
+		
+	}
+}
+
+
+@media all and (min-width:801px)
+{
+	/* for browsers bigger than 800 */
+	body
+	{
+		padding:15px 20px;
+	}
+
+	#right-column
+	{
+		clear:none;
+		float:right;
+		margin-left:-188px;
+		margin-top:0px;
+		width:188px;
+	}
+
+	#middle-column
+	{
+		float:none;
+		margin:0px 198px;
+		
+		text-align:center;
+		min-height:420px;
+	}
+
+	#info
+	{
+		clear:left;
+		text-align:center;
+		margin:0px 20px;
+	}
+}
+
+</STYLE>
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+var E_PUZZLE=12
+-->
+</SCRIPT>
+<SCRIPT LANGUAGE=javascript SRC="puzzles1.js"></SCRIPT>
+</HEAD>
+<BODY 
+	 BGCOLOR="#FFFFFF" ALIGN="CENTER"
+	 onselectstart='return false;' ondrag='return false;'>
+<TABLE BORDER="1" BORDERCOLOR="#808080" CELLSPACING="0" CELLPADDING="10" BACKGROUND="images/bg.jpg" 
+	WIDTH="100%" BGCOLOR="#F0F0C0" align="center">
+<TR><TD>
+<table id="topbar" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr height="5"><td></td><td></td></tr>
+<tr>
+<td align="left" width="100%">
+<H1><A href="/">TilePuzzles.com</A><SPAN class="subtitle"> -&nbsp;Numeric 8 Puzzle</SPAN></H1>
+</td>
+<TD ALIGN="right" class="addthis_buttons" style="position:relative;">
+<DIV id="addthisdiv">
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style" style="position:absolute; top:0px;right:0px; height:60px; width:210px;">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<!-- script moved to end -->
+<!--script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fd5fb8f3ab1b3a9"></script-->
+<!-- AddThis Button END -->
+</DIV>
+</TD>
+
+</tr>
+<TR><TD colspan="2" align="center">
+<DIV style="position: relative;	height:90px;" id="adouter">
+<DIV style="overflow: hidden; white-space: nowrap; position: absolute; width: 100%;">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- TilePuzzles 728x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-7472547808115475"
+     data-ad-slot="6676051744"></ins>
+<script>
+// return 0 if <=600, 1 if <=800, else 2
+function winsize()
+{
+	if (window.matchMedia)
+	{
+		var mq=window.matchMedia("all and (min-width:801px)");
+		if (mq.matches)
+			return 2;
+		mq=window.matchMedia("all and (min-width:601px)");
+		if (mq.matches)
+			return 1;
+		return 0;
+	}
+	else
+	{
+		var w = window,
+			d = document,
+			e = d.documentElement,
+			g = d.getElementsByTagName('body')[0],
+			x = w.innerWidth || e.clientWidth || g.clientWidth;
+		if (x<=600) return 0;
+		else if (x<=800) return 1;
+		else return 2;
+	}
+}
+
+var sz=winsize();
+if (sz==0)
+{
+	var o=GetObject("banneradunit");
+	o.setAttribute("data-ad-slot","3582984542");
+	o.style.width="320px";
+	o.style.height="50px";
+	o=GetObject("adouter");
+	o.style.height="50px";
+}
+else if (sz==1)
+{
+	var o=GetObject("banneradunit");
+	o.setAttribute("data-ad-slot","6536450941");
+	o.style.width="468px";
+	o.style.height="60px";
+	o=GetObject("adouter");
+	o.style.height="60px";
+}
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</DIV>
+</DIV>
+</TD></TR>
+<tr height="8"><td></td><td></td></tr>
+</table>
+
+
+
+</TD></TR>
+<TR><TD>
+<DIV id="container">
+<DIV id="middle-column">
+	<DIV style='max-width:800px;'><DIV style='height:0px;'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </DIV></DIV>
+
+<TABLE class="centered" style="position:relative;" WIDTH="212" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+
+<TR><TD align="center" width="100%">
+<SPAN id="loading" style="position:absolute; left:106px; z-index:1;" align="center"></SPAN>
+</TD></TR>
+
+<TR><TD>
+<TABLE class="puz0" CELLSPACING="0" CELLPADDING="0">
+<TR><TD height="192" WIDTH="192" align="left" valign="top">
+	<DIV class="gameframe">
+
+	<DIV style="position:absolute; left:0px; top:0px;">
+
+		
+<DIV>
+
+			<DIV id="D2" style="position:absolute; left:0px; top:0px; cursor:default;" 
+				onmousedown="dragStart(event,'D2')" ontouchstart="dragStart(event,'D2')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D2')" ontouchstart="dragStart(event,'D2')"><IMG id="icache0" src="./static/1.jpg" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X0" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D0')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D5" style="position:absolute; left:64px; top:0px; cursor:default;" 
+				onmousedown="dragStart(event,'D5')" ontouchstart="dragStart(event,'D5')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D5')" ontouchstart="dragStart(event,'D5')"><IMG id="icache1" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X1" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D1')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D3" style="position:absolute; left:128px; top:0px; cursor:default;" 
+				onmousedown="dragStart(event,'D3')" ontouchstart="dragStart(event,'D3')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D3')" ontouchstart="dragStart(event,'D3')"><IMG id="icache2" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X2" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D2')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D0" style="position:absolute; left:0px; top:64px; cursor:default;" 
+				onmousedown="dragStart(event,'D0')" ontouchstart="dragStart(event,'D0')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D0')" ontouchstart="dragStart(event,'D0')"><IMG id="icache3" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X3" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D3')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D1" style="position:absolute; left:64px; top:64px; cursor:default;" 
+				onmousedown="dragStart(event,'D1')" ontouchstart="dragStart(event,'D1')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D1')" ontouchstart="dragStart(event,'D1')"><IMG id="icache4" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X4" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D4')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D6" style="position:absolute; left:128px; top:64px; cursor:default;" 
+				onmousedown="dragStart(event,'D6')" ontouchstart="dragStart(event,'D6')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D6')" ontouchstart="dragStart(event,'D6')"><IMG id="icache5" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X5" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D5')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D7" style="position:absolute; left:0px; top:128px; cursor:default;" 
+				onmousedown="dragStart(event,'D7')" ontouchstart="dragStart(event,'D7')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D7')" ontouchstart="dragStart(event,'D7')"><IMG id="icache6" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X6" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D6')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+			<DIV id="D4" style="position:absolute; left:64px; top:128px; cursor:default;" 
+				onmousedown="dragStart(event,'D4')" ontouchstart="dragStart(event,'D4')">
+			<FONT size="5">
+				<DIV style="position:absolute; left:0px; top:0px;" onmousedown="dragStart(event,'D4')" ontouchstart="dragStart(event,'D4')"><IMG id="icache7" src="images/transparent.gif" width="64" height="64" alt=""></DIV>
+
+			</FONT>
+<!--
+	<FONT size="2">
+	<DIV id="X7" style="position:absolute; left:6px; top:25px;" onmousedown="dragStart(event,'D7')">
+		dbg
+	</DIV>
+	</FONT>
+-->
+			</DIV>
+
+</DIV>
+			
+<DIV>
+
+</DIV>
+			
+
+
+	</DIV>
+	</DIV>
+
+</TD></TR>
+</TABLE>
+
+
+</TD></TR>
+</TABLE>
+
+<DIV id="obj" class="centered" style="max-width:410px;">
+<H3><FONT color="#603000">OBJECTIVE<BR>Rearrange the tiles into the correct sequence.</FONT></H3>
+
+
+<!-- INPUT type="button" value="Restart" onclick="location='default.asp?p=12';" -->
+
+<B><A href='default.asp?p=12'>Restart</A>&nbsp;&nbsp;&nbsp;<A href='trad.asp'>Back to Traditional Puzzles</A>&nbsp;&nbsp;&nbsp;<A href='default.asp?p=18'>Train Games</A></B>
+
+</DIV>
+
+<P>
+
+</P>
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+var puzw=3;
+var puzh=3;
+
+var E_TILE=0;
+var E_BLANK=1;
+var E_BLOCK=2;
+var E_TILEW=64;
+var E_TILEH=64;
+var E_MOVEX=1;
+var E_MOVEY=2;
+var E_MOVEXY=3;
+var tw2=Math.floor(E_TILEW/2);
+var th2=Math.floor(E_TILEW/2);
+
+var E_WRAP=false;
+
+var tbl=new Array();
+var tgt=new Array();
+addtile(2,0,2,3,0);
+addtile(5,0,5,3,1);
+addtile(3,0,3,3,2);
+addtile(0,0,0,3,3);
+addtile(1,0,1,3,4);
+addtile(6,0,6,3,5);
+addtile(7,0,7,3,6);
+addtile(4,0,4,3,7);
+addtile(8,1,8,3,-1);
+
+function addtile(tile, type, group, move, targ)
+{
+	var i=tbl.length;
+	tbl[i]=new Object();
+	tbl[i].tile=tile;
+	tbl[i].type=type;
+	tbl[i].group=group;
+	tbl[i].move=move;
+	tbl[i].dx=0;
+	tbl[i].dy=0;
+	if (type==E_TILE)
+		tbl[i].o=GetObject("D"+tbl[i].tile);
+	else tbl[i].o=null;
+	tbl[i].sx=-1;
+	tbl[i].sy=-1;
+
+	tgt[i]=targ;
+}
+
+function draw()
+{
+	for (var y=0; y<puzh; y++)
+	{
+		for (var x=0; x<puzw; x++)
+		{
+			var i=x+puzw*y;
+			if (tbl[i].type==E_TILE)
+			{
+				var X=E_TILEW*x+tbl[i].dx;
+				var Y=E_TILEH*y+tbl[i].dy;
+				while (X<-tw2) X+=(E_TILEW*puzw);
+				while (X>=E_TILEW*puzw-tw2) X-=(E_TILEW*puzw);
+				while (Y<-th2) Y+=(E_TILEH*puzh);
+				while (Y>=E_TILEH*puzh-th2) Y-=(E_TILEH*puzh);
+				var o=tbl[i].o;
+				if (tbl[i].sx!=X)
+					o.style.left=(X)+"px";
+				if (tbl[i].sy!=Y)
+					o.style.top=(Y)+"px";
+				tbl[i].sx=X;
+				tbl[i].sy=Y;
+			}
+		}
+	}
+}
+
+// see if puzzle is solved
+var prevpct=-1;
+var solvedalready=false;
+function CheckTarget()
+{
+	var ntgt=0;
+	var nslv=0;
+
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		if (tgt[i]>=0)
+		{
+			++ntgt;
+			if (tbl[i].type!=E_BLANK && tbl[i].tile==tgt[i])
+			{
+				++nslv;
+			}
+		}
+	}
+	var o=GetObject("mvs");
+	if (o!=null && ntgt>0)
+	{
+		var pct=Math.floor(0.5+nslv*1000/ntgt)/10;
+		if (prevpct>=0 && pct!=prevpct)
+		{
+			if (pct>prevpct)
+				playFanfare(11);
+			else
+				playFanfare(12);
+		}
+		prevpct=pct;
+		o.innerHTML=MOVES+" move"+(MOVES==1?"":"s")+", "+pct+"% complete";
+	}
+
+	if (ntgt>0 && ntgt==nslv)
+	{
+		if (!solvedalready)
+			solved();
+		solvedalready=true;
+	}
+//	else
+//	{
+//		solvedalready=false;
+//	}
+}
+
+function addgroup(a, n)
+{
+	for (var q=0; q<a.length; q++)
+		if (tbl[a[q]].group==n)
+			return; // already done
+
+	var puza=puzw*puzh;
+	for (var q=0; q<puza; q++)
+	{
+		if (tbl[q].type==E_TILE && tbl[q].group==n)
+		{
+			a.push(q);
+		}
+	}
+}
+
+var congrat=
+[
+	"WELL DONE", "NICE ONE", "GOOD PLAY",
+	"TERRIFIC!", "EXCELLENT!", "FANTASTIC!",
+	"BRILLIANT!!", "AMAZING!!", "STUNNING!!"
+];
+
+function solved()
+{
+	var prevmv=getMoves(12);
+	updateMoves(12,MOVES);
+	if (String(typeof(updateBest))!="undefined") updateBest();
+
+	var o=GetObject("obj");
+	if (o!=null)
+	{
+		var snd=0;
+		var m="<H3>Solved in "+MOVES+" moves";
+		if (MOVES==prevmv)
+		{
+			snd=1;
+			m+=" - your personal best."
+		}
+		else if (MOVES<prevmv)
+		{
+			snd=2;
+			m+=" - a new personal best!"
+		}
+		else
+			m+=" - your best is "+prevmv+".";
+
+		playFanfare(snd);
+		o.innerHTML=m+"</H3><BR><B><A href='default.asp?p=12'>Play again</A>&nbsp;&nbsp;&nbsp;<A href='trad.asp'>Back to Traditional Puzzles</A>&nbsp;&nbsp;&nbsp;<A href='default.asp?p=18'>Train Games</A></B>";
+	}
+
+}
+
+var stateArr=new Array();
+function getState()
+{
+	for (i=0; i<tbl.length; i++)
+	{
+		if (tbl[i].type==E_BLANK)
+			stateArr[i]=" ";
+		else if (tbl[i].type==E_BLOCK)
+			stateArr[i]=".";
+		else
+			stateArr[i]=String.fromCharCode("A".charCodeAt(0)+tbl[i].tile);
+	}
+	return stateArr.join("");
+}
+function setState(st)
+{
+	var tbl2=new Array();
+	var tl=tbl.length;
+	for (var i=0; i<tl; i++)
+	{
+		tbl2[i]=null;
+	}
+	for (i=0; i<st.length; i++)
+	{
+		var c=st.substr(i,1);
+		if (c!=" "&& c!=".")
+		{
+			var j=c.charCodeAt(0)-("A".charCodeAt(0));
+			for (var k=0; k<tl; k++)
+				if (tbl[k].tile==j)
+					break;
+			tbl2[i]=tbl[k];
+		}
+	}
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		if (tbl2[i]==null)
+		{
+			tbl[i]=new Object();
+			tbl[i].tile=0;
+			tbl[i].type=E_BLANK;
+		}
+		else
+		{
+			tbl[i]=tbl2[i];
+		}
+		tbl[i].dx=0;
+		tbl[i].dy=0;
+		tbl[i].sx=tbl[i].sy=-1;
+	}
+}
+
+function slide(x, y, dist, dir)
+{
+	for (var q=0; q<tbl.length; q++)
+	{
+		tbl[q].dx=tbl[q].dy=0;
+	}
+
+	if (dist==0)
+		return 0;
+
+	if (dir==0 && (tbl[x+y*puzw].move&E_MOVEX)==0)
+		return 0;
+	if (dir==1 && (tbl[x+y*puzw].move&E_MOVEY)==0)
+		return 0;
+
+	var n=tbl[x+y*puzw].group;
+
+	var a=new Array(); // all the tiles we are dragging
+	addgroup(a, n)
+
+	var steps;
+	var dx=0;
+	var dy=0;
+	if (dir==0)
+	{
+		dx=(dist>0)?1:-1;
+		steps=Math.ceil(Math.abs(dist)/E_TILEW);
+	}
+	else
+	{
+		dy=(dist>0)?1:-1;
+		steps=Math.ceil(Math.abs(dist)/E_TILEH);
+	}
+	var blocked=false;
+	for (var N=1; N<=steps; N++)
+	{
+		// first off, see if we're blocked
+		for (var q=0; q<a.length; q++)
+		{
+			var x=a[q]%puzw;
+			var y=(a[q]-x)/puzw;
+			x+=Math.floor(tbl[a[q]].dx/E_TILEW);
+			y+=Math.floor(tbl[a[q]].dy/E_TILEH);
+			x+=dx;
+			y+=dy;
+
+			var i=((x+1000*puzw)%puzw)+((y+1000*puzh)%puzh)*puzw;
+			if ((!E_WRAP && (x>=puzw || x<0 || y>=puzh || y<0)) || tbl[i].type==E_BLOCK
+				|| (dx!=0 && tbl[i].type==E_TILE && (tbl[i].move&E_MOVEX)==0)
+				|| (dy!=0 && tbl[i].type==E_TILE && (tbl[i].move&E_MOVEY)==0)
+				)
+			{
+				// cant move this far
+				blocked=true;
+				break;
+			}
+			else
+			{
+				// anything immediately in front gets dragged too
+				if (tbl[i].type==E_TILE)
+				{
+					addgroup(a, tbl[i].group);
+				}
+			}
+		}
+		if (blocked)
+			break;
+		if (N==steps)
+		{
+			// move the last fraction of a tile-size
+			var DX=0;
+			var DY=0;
+			if (dx) DX=dist-dx*(steps-1)*E_TILEW;
+			if (dy) DY=dist-dy*(steps-1)*E_TILEH;
+			for (var q=0; q<a.length; q++)
+			{
+				tbl[a[q]].dx+=DX;
+				tbl[a[q]].dy+=DY;
+			}
+		}
+		else
+		{
+			for (var q=0; q<a.length; q++)
+			{
+				tbl[a[q]].dx+=dx*E_TILEW;
+				tbl[a[q]].dy+=dy*E_TILEH;
+			}
+		}
+	}
+}
+
+
+function dragTile(o, ox, oy, dx, dy)
+{
+	var x=Math.floor(ox/E_TILEW);
+	var y=Math.floor(oy/E_TILEW);
+
+	if (dx==0 && dy==0)
+	{
+		o.style.cursor="default";
+	}
+	else if (Math.abs(dx)>Math.abs(dy))
+	{
+		for (var i=0; i<puzw*puzh; i++)
+			tbl[i].dy=0;
+		slide(x,y,dx,0);
+		o.style.cursor="w-resize";
+	}
+	else
+	{
+		for (var i=0; i<puzw*puzh; i++)
+			tbl[i].dx=0;
+		slide(x,y,dy,1);
+		o.style.cursor="n-resize";
+	}
+	var i=x+puzw*y;
+	var x=tbl[i].dx;
+	var y=tbl[i].dy;
+	if (Math.abs(x)>=E_TILEW || Math.abs(y)>=E_TILEH)
+	{
+		x=Math.floor(Math.abs(x)/E_TILEW);
+		y=Math.floor(Math.abs(y)/E_TILEH);
+		if (tbl[i].dx<0) x=-x;
+		if (tbl[i].dy<0) y=-y;
+		dragRound();
+		dragAdjust(x*E_TILEW,y*E_TILEH);
+	}
+	draw();
+}
+
+// adjust so all dx, dy are less than 1 tile
+function dragRound()
+{
+	var tbl2=new Array();
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		tbl2[i]=null;
+	}
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		var x=i%puzw;
+		var y=Math.floor(i/puzw);
+		var dx=Math.floor(Math.abs(tbl[i].dx)/E_TILEW);
+		if (tbl[i].dx<0) dx=-dx;
+		var dy=Math.floor(Math.abs(tbl[i].dy)/E_TILEH);
+		if (tbl[i].dy<0) dy=-dy;
+		while (dx+x<0) dx+=puzw;
+		while (dx+x>=puzw) dx-=puzw;
+		while (dy+y<0) dy+=puzh;
+		while (dy+y>=puzh) dy-=puzh;
+		if (dx!=0 || dy!=0)
+		{
+			tbl2[i+dx+dy*puzw]=tbl[i];
+			tbl2[i+dx+dy*puzw].dx-=dx*E_TILEW;
+			tbl2[i+dx+dy*puzw].dy-=dy*E_TILEH;
+		}
+		else if (tbl[i].type!=E_BLANK)
+		{
+			tbl2[i]=tbl[i];
+		}
+	}
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		if (tbl2[i]==null)
+		{
+			tbl[i]=new Object();
+			tbl[i].tile=0;
+			tbl[i].type=E_BLANK;
+			tbl[i].move=E_MOVEXY;
+		}
+		else
+		{
+			tbl[i]=tbl2[i];
+		}
+	}
+}
+
+function getcookie(n,dflt)
+{
+	var allcookies=document.cookie;
+	var pos=allcookies.indexOf(n+"=");
+	var value=dflt;
+	if (pos!=-1)
+	{
+		var start=pos+n.length+1;
+		var end=allcookies.indexOf(";", start);
+		if (end==-1) end=allcookies.length;
+		var value=allcookies.substring(start, end);
+	}
+	return value;
+}
+
+var PREVSTATE=getState();
+var MOVES=0;
+
+
+// put all tiles at nearest grid position
+function dragSnap(o)
+{
+	if (o)
+		o.style.cursor="default";
+	var tbl2=new Array();
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		tbl2[i]=null;
+	}
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		var x=i%puzw;
+		var y=Math.floor(i/puzw);
+		var dx=Math.floor((tbl[i].dx+tw2)/E_TILEW);
+		var dy=Math.floor((tbl[i].dy+th2)/E_TILEH);
+		while (dx+x<0) dx+=puzw;
+		while (dx+x>=puzw) dx-=puzw;
+		while (dy+y<0) dy+=puzh;
+		while (dy+y>=puzh) dy-=puzh;
+		if (dx!=0 || dy!=0)
+		{
+			tbl2[i+dx+dy*puzw]=tbl[i];
+		}
+		else if (tbl[i].type!=E_BLANK)
+		{
+			tbl2[i]=tbl[i];
+		}
+	}
+	for (var i=0; i<puzw*puzh; i++)
+	{
+		if (tbl2[i]==null)
+		{
+			tbl[i]=new Object();
+			tbl[i].tile=0;
+			tbl[i].type=E_BLANK;
+		}
+		else
+		{
+			tbl[i]=tbl2[i];
+		}
+		tbl[i].dx=0;
+		tbl[i].dy=0;
+	}
+	draw();
+	var st=getState();
+	if (st!=PREVSTATE)
+	{
+		PREVSTATE=st;
+		MOVES++;
+		var o=GetObject("counter");
+		if (o!=null)
+		{
+			o.innerHTML=MOVES;
+		}
+		playClick();
+
+	}
+	CheckTarget();
+}
+
+
+
+draw();
+CheckTarget();
+-->
+</SCRIPT>
+<BR>
+<DIV id="rect-ad">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- TilePuzzles 320x50 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:50px"
+     data-ad-client="ca-pub-7472547808115475"
+     data-ad-slot="3582984542"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</DIV>
+<BR>&nbsp;<BR>
+</DIV>
+<DIV id="info">TilePuzzles.com - a stunning collection of over 40 different sliding tile games and puzzles in various formats including traditional number squares, wooden blocks, picture tiles, and trains, from an easy introductory puzzle to the hardest tile game imaginable.<BR>&nbsp;<BR>Collect medals in the Tile Championship and submit your score to the Hi Scores.</DIV>
+</DIV>
+<DIV id="left-column">
+	<!--DIV id="leftmenucollapsed">
+<table class="menutbl" cellspacing="0" cellpadding="0" align="left" width="188">
+<tr><td>
+	<table border="0"  cellspacing="0" cellpadding="0" align="center" width="100%" bgcolor="#C07000">
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="javascript:openmenu()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu</A></SPAN>
+	</td></tr>
+	</table>
+</td></tr>
+</table>
+</DIV-->
+
+<DIV id="leftmenucollapsed">
+<table class="menutbl" cellspacing="0" cellpadding="0" align="left" width="188">
+<tr><td>
+	<table border="0"  cellspacing="0" cellpadding="0" align="center" width="100%" bgcolor="#C07000">
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="javascript:openleftmenu(true)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open Menu</A></SPAN>
+	</td></tr>
+	</table>
+</td></tr>
+</table>
+</DIV>
+<DIV id="leftmenuopen">
+<table class="menutbl" cellspacing="0" cellpadding="0" align="left" width="188">
+<tr><td>
+	<table border="0"  cellspacing="0" cellpadding="0" align="center" width="100%" bgcolor="#C07000">
+	<tr height="18"><td id="closemenu" background="images/menutile2.jpg">
+		&nbsp;
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="medals.asp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tile Championship</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="trad.asp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Traditional</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="default.asp?p=18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Train Games</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="impuzzible.asp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Impuzzibles</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="hiscore.asp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi Scores</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="help.asp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Help</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile2.jpg">
+		&nbsp;
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile2.jpg"><b>&nbsp;Links:</b></td></tr>
+
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="http://www.dicesimulator.com/" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dice Simulator</A></SPAN>
+	</td></tr>
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="https://www.spotthedifference.com" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spot the Difference</A></SPAN>
+	</td></tr>
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="http://www.2minutegames.com/" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two Minute Games</A></SPAN>
+	</td></tr>
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="https://www.combinationlock.com/" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Combination Lock</A></SPAN>
+	</td></tr>
+
+	<tr height="54"><td background="images/menutile2.jpg" align="center">
+		<SPAN class="menulink2">&nbsp;<BR><i><a href="http://www.originalgames.com/iphone/tilepuzzles.asp" target="_top">Now available for<BR>iPhone and iPod Touch!</a></i></SPAN>
+	</td></tr>
+
+	<tr height="90"><td background="images/menutile2.jpg" align="center">
+		<SPAN class="menulink"><a href="moreinfo.asp" target="_top">Like more<br>information about<br>Tile Puzzles?</a></SPAN>
+	</td></tr>
+
+	</table>
+</td></tr>
+</table>
+</DIV>
+
+<script>
+var isopen=false;
+function openleftmenu(opn)
+{
+	isopen=opn;
+	var oo=GetObject("leftmenuopen");
+	var oc=GetObject("leftmenucollapsed");
+	if (isopen)
+	{
+		oo.style.display="block";
+		oc.style.display="none";
+
+		var o1=GetObject("closemenu");
+		o1.setAttribute("background","images/menutile.jpg");
+		o1.innerHTML='<SPAN class="menulink"><A href="javascript:openleftmenu(false)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Close Menu</A></SPAN>';
+	}
+	else
+	{
+		oc.style.display="block";
+		oo.style.display="none";
+	}
+}
+function winresize()
+{
+	var sz=winsize();
+
+	if (sz>0 && !isopen)
+	{
+		openleftmenu(true);
+		var o1=GetObject("closemenu");
+		o1.setAttribute("background","images/menutile2.jpg");
+		o1.innerHTML='';
+	}
+	else if (sz==0)
+	{
+		openleftmenu(false);
+		GetObject("left-column").style.top=(parseInt(GetObject("topbar").clientHeight)+30)+"px";
+	}
+}
+window.onresize=winresize;
+winresize();
+</script>
+
+</DIV>
+
+<DIV id="right-column">
+	<table border="0" cellspacing="0" cellpadding="0" align="left" width="188">
+<tr><td background="images/menutile3.jpg"><DIV style="position:absolute;"><DIV id="msg"></DIV></DIV>
+</td></TR>
+<TR><TD>
+
+
+<table class="menutbl" cellspacing="0" cellpadding="0" align="left" width="100%">
+
+<tr><td align="center" background="images/menutile3.jpg">
+	<FONT size="3"><B>OBJECTIVE</B></FONT>
+</td></tr>
+<tr><td align="center" background="images/menutile3.jpg">
+	<img id="icache8" src="images/transparent.gif" width="50" height="50" alt="">
+</td></tr>
+
+<TR><TD background="images/menutile3.jpg" align="center">&nbsp;</TD></TR>
+
+</table>
+
+</TD></TR>
+<TR><TD height="10">
+</TD></TR>
+<TR><TD>
+
+
+
+
+
+
+
+
+<table class="menutbl" cellspacing="0" cellpadding="0" align="left" width="100%">
+<tr><td class="menulink3">
+	<table border="0"  cellspacing="0" cellpadding="0" align="center" width="100%" bgcolor="#C07000">
+	<tr height="40"><td background="images/menutile3.jpg" align="center">
+		<B><A href="http://www.originalgames.com/iphone/tilepuzzles.asp" target="_blank">Tile Puzzles for iPhone.<BR>
+		FREE</A></B>
+	</td></tr>
+	<tr height="60"><td background="images/menutile3.jpg" align="center">
+		<A href="http://www.originalgames.com/iphone/tilepuzzles.asp" target="_blank">Masses of Tile Puzzles on<BR>
+		the iPhone, including 100 Train game puzzles.</A>
+	</td></tr>
+	</table>
+</td></tr>
+</table>
+
+
+<TR><TD height="10">
+</TD></TR>
+<TR><TD>
+
+
+
+
+
+
+
+
+
+
+<FORM onSubmit="javascript:return srch(this);">
+<table class="menutbl" cellspacing="0" cellpadding="0" align="left" width="100%">
+<tr><td>
+	<table border="0"  cellspacing="0" cellpadding="0" align="center" width="100%" bgcolor="#C07000">
+	<tr height="18"><td background="images/menutile3.jpg">
+		&nbsp;
+	</td></tr>
+	<tr height="18"><td background="images/menutile2.jpg">
+		<B>&nbsp;More sites by</B>
+	</td></tr>
+	<tr height="18"><td background="images/menutile3.jpg">
+		<B>&nbsp;Original Games:</B>
+	</td></tr>
+
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="http://www.empireattack.com" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empire Attack</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="http://www.rolloverapp.com" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rollover</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile.jpg">
+		<SPAN class="menulink"><A href="https://www.spotthedifference.com/" TARGET="_blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spot The Difference</A></SPAN>
+	</td></tr>
+
+	<tr height="18"><td background="images/menutile2.jpg">
+		&nbsp;
+	</td></tr>
+
+
+	</td></tr>
+	</table>
+</td></tr>
+</table>
+</FORM>
+
+</TD></TR>
+</TABLE>
+
+<SCRIPT language=JavaScript>
+<!--
+function srch(f)
+{
+	var s=f.elements[0].value; // search term
+
+	var t="";
+	for (var i=0; i<s.length; i++)
+	{
+		var c=s.charAt(i);
+		if ((c>='0' && c<='9') || (c>='A' && c<='Z') || (c>='a' && c<='z'))
+			t+=c;
+		else
+		{
+			t+='%';
+			var h=c.charCodeAt(0)>>4;
+			if (h>9) t+=String.fromCharCode(55+h);
+			else t+=String.fromCharCode(48+h);
+			h=c.charCodeAt(0)&15;
+			if (h>9) t+=String.fromCharCode(55+h);
+			else t+=String.fromCharCode(48+h);
+		}
+	}
+	location="default.asp?t="+t;
+	return false;
+}
+
+function updateBest()
+{
+	var o=GetObject("best");
+	if (o!=null)
+	{
+		var m=getMoves(12);
+		if (m<1000000)
+			o.innerHTML="&nbsp;<B>Best: "+m+"</B>";
+	}
+	o=GetObject("counter");
+	if (o!=null)
+	{
+		o.innerHTML=MOVES;
+	}
+}
+
+updateBest();
+-->
+</SCRIPT>
+
+
+</DIV>
+
+	</br>
+
+</TD></TR>
+</TABLE>
+
+<P ALIGN="CENTER">
+<A href="mailto:?subject=www.tilepuzzles.com &body=Thought you may be interested in seeing this site.%0DCan you beat my Hi Score?  ;-)">Tell a friend</A> about TilePuzzles.com&nbsp;-&nbsp;
+<A href="help.asp">About</A> this site&nbsp;-&nbsp;
+<A href="sitemap.asp">Sitemap</A>
+</P>
+<P ALIGN="CENTER">
+<span class="small">&copy; 2002-2025&nbsp;<A href="http://www.originalgames.com" target="_blank">OriginalGames.com</A></span></P>
+
+</BODY>
+
+<SCRIPT LANGUAGE=javascript SRC="sound.js"></SCRIPT>
+
+<SCRIPT LANGUAGE=javascript>
+<!--
+addimg('images/numbers/img_1x3.jpg');
+addimg('images/numbers/img_2x1.jpg');
+addimg('images/numbers/img_1x4.jpg');
+addimg('images/numbers/img_1x1.jpg');
+addimg('images/numbers/img_1x2.jpg');
+addimg('images/numbers/img_2x2.jpg');
+addimg('images/numbers/img_2x3.jpg');
+addimg('images/numbers/img_1x5.jpg');
+addimg('images/targets/trad8.jpg');
+
+setTimeout("drawimgs();",50);
+-->
+</SCRIPT>
+
+<!-- AddThis Welcome BEGIN -->
+<!-- 
+AddThis buttons removed as they make the site unresponsive while they are loading,
+which takes a long time particularly on mobile/wifi 
+-->
+<!--
+<script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fd5fb8f3ab1b3a9"></script>
+<script type='text/javascript'>
+addthis.bar.initialize({'default':{
+	"backgroundColor": "#D0D0D0",
+	"buttonColor": "#098DF4",
+	"textColor": "#000000",
+	"buttonTextColor": "#FFFFFF"
+},rules:[
+	{
+		"name": "Twitter",
+		"match": {
+			"referringService": "twitter"
+		},
+		"message": "If you enjoy TilePuzzles.com:",
+		"action": {
+			"type": "button",
+			"text": "Tweet it!",
+			"verb": "share",
+			"service": "twitter"
+		}
+	},
+	{
+		"name": "Facebook",
+		"match": {
+			"referringService": "facebook"
+		},
+		"message": "Tell your friends about us:",
+		"action": {
+			"type": "button",
+			"text": "Share on Facebook",
+			"verb": "share",
+			"service": "facebook"
+		}
+	},
+	{
+		"name": "Google",
+		"match": {
+			"referrer": "google.com"
+		},
+		"message": "If you enjoy TilePuzzles.com, let Google know:",
+		"action": {
+			"type": "button",
+			"text": "+1",
+			"verb": "share",
+			"service": "google_plusone_share"
+		}
+	}
+]});
+</script>
+-->
+<!-- AddThis Welcome END -->
+
+</HTML>

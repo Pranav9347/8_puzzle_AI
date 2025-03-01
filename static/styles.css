@@ -1,0 +1,39 @@
+.puzzle {
+    border: 10px #804000 solid;
+    margin: 0px;
+    padding: 0px;
+    background-color: #C0C0C0;
+}
+
+@media all and (min-width:801px)
+{
+	/* for browsers bigger than 800 */
+	body
+	{
+		padding:15px 20px;
+	}
+
+	#right-column
+	{
+		clear:none;
+		float:right;
+		margin-left:-188px;
+		margin-top:0px;
+		width:188px;
+	}
+
+	#middle-column
+	{
+		float:none;
+		margin:0px 198px;
+		text-align:center;
+		min-height:420px;
+	}
+
+	#info
+	{
+		clear:left;
+		text-align:center;
+		margin:0px 20px;
+	}
+}
