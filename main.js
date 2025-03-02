@@ -1,5 +1,5 @@
 const dropSound = new Audio('./static/click.wav');
-
+    
 // Select all required html objects:
 
 let reset_moves = document.getElementsByName('reset_moves');
@@ -37,8 +37,23 @@ document.querySelectorAll('td').forEach(cell => {
     cell.addEventListener('drop', (e) => {
         e.preventDefault();
         if (!cell.querySelector('img')) { // Only drop into empty cells
-            cell.appendChild(draggedTile); // Move the tile to the new cell
+            const originalCell = draggedTile.parentElement;
+            const targetCell = cell;
+
+            // Get positions of original and target cells
+            const originalRow = originalCell.parentNode.rowIndex;
+            const originalCol = originalCell.cellIndex;
+            const targetRow = targetCell.parentNode.rowIndex;
+            const targetCol = targetCell.cellIndex;
+
+            // Check if adjacent (horizontally or vertically)
+            const rowDiff = Math.abs(originalRow - targetRow);
+            const colDiff = Math.abs(originalCol - targetCol);
+            
+            if (rowDiff + colDiff === 1) { // Adjacent cells
+                targetCell.appendChild(draggedTile);
+                dropSound.play();
+            }
         }
-        dropSound.play();
     });
 });
