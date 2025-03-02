@@ -14,6 +14,8 @@ const goalConfig = [
   ['7', '8', null]
 ];
 
+let initialConfig = null; // Global variable to store the initial random configuration
+
 function getCurrentConfiguration() {
   const config = [];
   const rows = document.querySelectorAll('.puzzle tr');
@@ -42,10 +44,7 @@ function arraysEqual(a, b) {
 }
 
 function Solved() {
-  if (arraysEqual(getCurrentConfiguration(), goalConfig)) {
-    return true;
-  }
-  return false;
+  return arraysEqual(getCurrentConfiguration(), goalConfig);
 }
 
 // Helper: robustly extract pointer coordinates.
@@ -69,14 +68,29 @@ function shuffleArray(array) {
   return array;
 }
 
-// Reset function: Randomizes the puzzle configuration.
-function resetPuzzle() {
-  // Create an array with tile values (as strings) and one null for the empty cell.
-  const tileValues = ['1', '2', '3', '4', '5', '6', '7', '8', null];
-  // Shuffle the array.
-  shuffleArray(tileValues);
-  
-  // Get all the rows of the puzzle.
+// Check if a configuration is solvable.
+// For the 3x3 puzzle, it's solvable if the number of inversions is even.
+function isSolvable(arr) {
+  const tiles = arr.filter(val => val !== null).map(Number);
+  let inversions = 0;
+  for (let i = 0; i < tiles.length; i++) {
+    for (let j = i + 1; j < tiles.length; j++) {
+      if (tiles[i] > tiles[j]) inversions++;
+    }
+  }
+  return inversions % 2 === 0;
+}
+
+// Adjust config by swapping two non-null tiles if inversions are odd.
+function adjustConfig(config) {
+  let i = config.findIndex(val => val !== null);
+  let j = config.findIndex((val, idx) => val !== null && idx !== i);
+  [config[i], config[j]] = [config[j], config[i]];
+  return config;
+}
+
+// Apply a given configuration array (length 9) to the puzzle board.
+function applyConfig(config) {
   const rows = document.querySelectorAll('.puzzle tr');
   let index = 0;
   rows.forEach(row => {
@@ -84,7 +98,7 @@ function resetPuzzle() {
     cells.forEach(cell => {
       // Clear existing content.
       cell.innerHTML = '';
-      const value = tileValues[index++];
+      const value = config[index++];
       if (value !== null) {
         // Create a new image element.
         const img = document.createElement('img');
@@ -107,7 +121,7 @@ function resetPuzzle() {
     }
   });
   
-  // Update cell dimensions if they haven't been set.
+  // Set cell dimensions if they haven't been set.
   if (cellWidth === 0) {
     document.querySelectorAll('.puzzle td').forEach(cell => {
       if (cell.querySelector('img') && cellWidth === 0) {
@@ -115,6 +129,24 @@ function resetPuzzle() {
         cellHeight = cell.offsetHeight;
       }
     });
+  }
+}
+
+// Generate and store the initial random configuration.
+function generateInitialConfig() {
+  const tileValues = ['1', '2', '3', '4', '5', '6', '7', '8', null];
+  shuffleArray(tileValues);
+  if (!isSolvable(tileValues)) {
+    adjustConfig(tileValues);
+  }
+  initialConfig = tileValues.slice(); // Store a copy
+  applyConfig(initialConfig);
+}
+
+// Reset moves: Reapply the stored initial configuration.
+function resetMoves() {
+  if (initialConfig) {
+    applyConfig(initialConfig);
   }
 }
 
@@ -126,7 +158,7 @@ document.addEventListener('selectstart', (e) => {
 });
 
 // Attach event listeners for mouse and touch events on each tile.
-// (These are reattached when resetting the puzzle, so this only runs if the page is initially built with the tiles.)
+// (These will also be reattached when applying a configuration.)
 document.querySelectorAll('td img').forEach(tile => {
   tile.addEventListener('mousedown', dragStart);
   tile.addEventListener('touchstart', dragStart, { passive: false });
@@ -273,8 +305,18 @@ function dragEnd(e) {
 }
 
 // Initialize the puzzle with a random configuration on page load.
-document.addEventListener('DOMContentLoaded', resetPuzzle);
+document.addEventListener('DOMContentLoaded', generateInitialConfig);
 
-// (Optional) Attach reset functionality to a button, if you have one.
-// Example HTML: <button id="resetBtn">Reset Puzzle</button>
-document.getElementsByName(new_game).addEventListener('click', resetPuzzle);
+// (Optional) Attach reset functionality to a button with name "reset_moves".
+// Each time the reset button is pressed, the board reverts to the initial configuration.
+document.getElementsByName('reset_moves')[0].addEventListener('click', function(e) {
+  e.preventDefault();
+  resetMoves();
+});
+
+// Attach new game functionality to a button with name "new_game".
+// This generates a new initial configuration.
+document.querySelector('button[name="new_game"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  generateInitialConfig();
+});

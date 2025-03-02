@@ -146,3 +146,6 @@ img {
 	-webkit-user-drag: none;
   }
   
+.solutionOutput{
+	align-items: center;
+}
