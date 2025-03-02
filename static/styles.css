@@ -18,6 +18,7 @@ h1{
 }
 
 td {
+	position: relative;
     padding: 0; /* Removes internal padding */
     margin: 0; /* Just in case */
 }
@@ -25,7 +26,7 @@ td {
 td img {
     display: block; /* Removes extra space under images */
     width: 100%; /* Optional: make sure images fill the cells */
-    height: auto;
+    height: auto;	
 }
 
 .gameframe{
@@ -126,3 +127,22 @@ img {
 img:active {
     cursor: grabbing;
 }
+
+td img {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.valid-drop {
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+img {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/* Optional: prevent dragging ghost image if needed */
+	-webkit-user-drag: none;
+  }
+  
