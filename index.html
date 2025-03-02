@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8_puzzle_game</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./static/styles.css">
 </head>
 <body>
+    <h1>8-PUZZLE GAME</h1>
     <div class="gameframe">
         <table class="puzzle">
             <tbody>
                 <tr>
-                    <td>1.jpg</td> <td>1.jpg</td> <td>1.jpg</td>
+                    <td id="00"><img src="./static/1.jpg"></td> <td id="01"><img src="./static/2.jpg"></td> <td id="02"><img src="./static/3.jpg"></td>
                 </tr>
                 <tr>
-                    <td>1.jpg</td> <td>1.jpg</td> <td>1.jpg</td>
+                    <td id="10"><img src="./static/4.jpg"></td> <td id="11"><img src="./static/5.jpg"></td> <td id="12"><img src="./static/6.jpg" ></td>
                 </tr>
                 <tr>
-                    <td>1.jpg</td> <td>1.jpg</td> <td></td>
+                    <td id="20"><img src="./static/7.jpg"></td> <td id="21"><img src="./static/8.jpg"  ></td> <td id="22"></td>
                 </tr>
             </tbody>
         </table>
-
     </div>
-    <script src="main.js"></script>
+    <div class="button_container">
+        <button class="button" type="submit" name="reset_moves">Reset Moves</button>
+        <button class="button" type="submit" name="solution">Solution</button>
+        <button class="button" type="submit" name="new_game">New Game</button>
+    </div>
+    <div class="objective"><h4><b>OBJECTIVE:</b> Rearrange tiles to get this configuration</h4>
+    <img src="./static/goal.png" height="200px"></div>
+    <script src="./main.js"></script>
 </body>
 </html>

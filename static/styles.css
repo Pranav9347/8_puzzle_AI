@@ -1,8 +1,86 @@
+body{
+	background-color: burlywood;
+}
+
+h1{
+	text-align: center;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-weight: 200;
+	font-size: 400%;
+}
 .puzzle {
     border: 10px #804000 solid;
     margin: 0px;
     padding: 0px;
     background-color: #C0C0C0;
+	border-collapse: collapse; /* Removes space between cells */
+	border-spacing: 0; /* Ensures no extra spacing */
+}
+
+td {
+    padding: 0; /* Removes internal padding */
+    margin: 0; /* Just in case */
+}
+
+td img {
+    display: block; /* Removes extra space under images */
+    width: 100%; /* Optional: make sure images fill the cells */
+    height: auto;
+}
+
+.gameframe{
+	display: grid;
+	place-items: center;
+}
+
+.button_container{
+	display: flex; /* Flexbox is better for arranging multiple elements */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    gap: 10px; /* Add some space between buttons */
+    height: 15vh;
+}
+
+/* .button
+{
+	background-color:blue;
+	color:white;
+	width: 65px;
+	height: 35px;
+} */
+.button {
+    padding: 12px 24px;
+    font-size: 1.2rem; /* slightly larger for readability */
+    font-weight: bold;
+    border: none;
+    border-radius: 8px; /* smooth, rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease; /* smooth hover effect */
+}
+/* Color theme */
+.button[name="reset_moves"] {
+    background-color: #FF6347; /* Tomato red */
+    color: white;
+}
+
+.button[name="solution"] {
+    background-color: darkblue; /* Steel blue */
+    color: white;
+}
+
+.button[name="new_game"] {
+    background-color: #32CD32; /* Lime green */
+    color: white;
+}
+.button:hover {
+    background-color: #5a9bd4; /* Change background color */
+    transform: scale(1.01); /* Slightly grow the button */
+    color: #fff; /* Ensure text color doesn't break */
+}
+.objective{
+	text-align: center;
+	font-weight: 10;
+	font-size: 200%;
 }
 
 @media all and (min-width:801px)
@@ -36,4 +114,15 @@
 		text-align:center;
 		margin:0px 20px;
 	}
+}
+
+img {
+    width: 100px; /* Adjust to match your tiles */
+    height: 100px;
+    cursor: grab;
+    transition: all 0.2s ease; /* Smooth animations */
+}
+
+img:active {
+    cursor: grabbing;
 }
