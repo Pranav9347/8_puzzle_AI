@@ -6,6 +6,7 @@ let currentDelta = 0;     // Current movement offset along allowed axis
 let emptyCell = null;     // Current empty cell in the puzzle
 let cellWidth = 0, cellHeight = 0;
 let direction = null;     // Allowed movement: 'left', 'right', 'up', or 'down'
+let move_count = 0;
 
 // Example goal configuration for a 3x3 puzzle:
 const goalConfig = [
@@ -219,7 +220,7 @@ function drag(e) {
   let delta = currentPos - startCoord;
   
   // Define a maximum drag distance that keeps the tile within its cell.
-  const maxDrag = (direction === 'left' || direction === 'right') ? cellWidth * 0.92 : cellHeight * 0.92;
+  const maxDrag = (direction === 'left' || direction === 'right') ? cellWidth * 0.9 : cellHeight * 0.9;
   
   // Clamp delta so that during drag the tile doesn't leave its cell visually.
   if (direction === 'left') {
@@ -278,12 +279,20 @@ function dragEnd(e) {
       draggedTile.style.transform = '';
       draggedTile.style.zIndex = '';
       dropSound.play();
+      move_count++;
       // Update the empty cell to be the one just vacated.
       emptyCell = origCell;
 
       // Check if the puzzle is solved.
       if (Solved()) {
         youWon.play();
+        document.getElementById('move_count').innerHTML = 
+        "<div style='font-weight: bold; font-size: 24px; text-align: center;'>"
+        + "<span>Number of moves:</span> "
+        + "<span style='color: red;'>" + move_count + "</span>"
+        + "</div>";
+        move_count=0;
+        document.getElementById('congratsOverlay').style.display = 'block';
       }
 
       // Clear drag state.
@@ -311,6 +320,7 @@ document.addEventListener('DOMContentLoaded', generateInitialConfig);
 // Each time the reset button is pressed, the board reverts to the initial configuration.
 document.getElementsByName('reset_moves')[0].addEventListener('click', function(e) {
   e.preventDefault();
+  move_count=0;
   resetMoves();
 });
 
@@ -318,5 +328,6 @@ document.getElementsByName('reset_moves')[0].addEventListener('click', function(
 // This generates a new initial configuration.
 document.querySelector('button[name="new_game"]').addEventListener('click', function(e) {
   e.preventDefault();
+  move_count=0;
   generateInitialConfig();
 });

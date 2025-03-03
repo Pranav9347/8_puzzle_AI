@@ -30,7 +30,7 @@
         </table>
     </div>
     <div id="congratsOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); color:white; text-align:center; padding-top:20%;">
-        <h1>Congratulations!</h1>
+        <h2>Congratulations!</h2>
         <p>You solved the puzzle!</p>
         <button onclick="location.reload()">Play Again</button>
       </div>
@@ -40,9 +40,11 @@
         <button class="button" type="submit" name="solution">Solution</button>
         <button class="button" type="submit" name="new_game">New Game</button>
     </div>
+    <div id="move_count"></div>
     <div class="objective"><h4><b>OBJECTIVE:</b> Rearrange tiles to get this configuration</h4>
     <img src="./static/goal.png" height="200px"></div>
     <div class="solutionOutput" id="solutionOutput"></div>
     <script src="./main.js"></script>
+    <!-- <script src="./AI_solver.js" defer></script> -->
 </body>
 </html>
