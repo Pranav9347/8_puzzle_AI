@@ -76,33 +76,22 @@ class MinHeap {
       }
     }
   }
-solutionDiv = null;
-function print2DArray(matrix) {
-    for (let i = 0; i < matrix.length; i++) {
-      console.log(matrix[i].join(" "));
-    }
-  }
-function arrayToMatrix(arr) {
-    let matrix = [];
-    for (let i = 0; i < 3; i++) {
-        matrix.push(arr.slice(i * 3, i * 3 + 3).map(val => val === null ? 0 : val));
-    }
-    return matrix;
-}
+
 // let initialConfig = [4,6,1,7,2,5,0,8,3];
 const G = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 0]
 ];
-let goalSequence = []; // This will hold the sequence of moves (states)
-// Best_first_search(arrayToMatrix(initialConfig));
-// displaySolution();
-
-
 
 // ------------------- Utility Functions -------------------
-
+function arrayToMatrix(arr) {
+  let matrix = [];
+  for (let i = 0; i < 3; i++) {
+    matrix.push(arr.slice(i * 3, i * 3 + 3).map(val => val === null ? 0 : val));
+  }
+  return matrix;
+}
 // Deep clone a 2D array representing a puzzle state.
 function cloneState(state) {
 return state.map(row => row.slice());
@@ -162,116 +151,51 @@ return mismatch;
 
 // A_Star Search to solve the puzzle.
 function A_star(S) {
-    let best_cost = Infinity;
-    let best_path = [];
-    // Create a min heap with a comparator based on the f value (g + h)
-    let minHeap = new MinHeap((a, b) => a.f - b.f);
-    
-    // Global visited set to store stringified states
-    let visited = new Set();
-    
-    // Push the initial node: f = h(S), g = 0, h = h(S), state = S, path = []
-    minHeap.push({ f: h(S), g: 0, h: h(S), state: S, path: [] });
-    visited.add(JSON.stringify(S));  // Mark the initial state as visited
-    
-    while (!minHeap.isEmpty()) {
-      // Pop the node with the lowest f value
-      const node = minHeap.pop();
-      let { f, g, h: heuristic, state: curr, path } = node;
-      // Make a copy of the current path and add the current state.
-      let newPath = path.slice();
-      newPath.push(curr);
-      
-      // Goal test: if heuristic is 0, we have reached the goal.
-      if (heuristic === 0) {
-        if (g < best_cost) {
-          best_cost = g;
-          best_path = newPath;
-          goalSequence = best_path;
-          console.log("Minimum number of moves =", best_cost);
-          return;
-        }
-      } else {
-        // Prune paths that already cost more than our best solution.
-        if (g > best_cost) continue;
-        
-        // Expand neighbors
-        const neighbors = moveGen(curr);
-        for (let child of neighbors) {
-          // Convert the child state to a string
-          const childStr = JSON.stringify(child);
-          // Only process this child if it hasn't been visited
-          if (!visited.has(childStr)) {
-            visited.add(childStr);
-            let new_g = g + 1;       // Increment cost for the child node
-            let new_h = h(child);      // Compute heuristic for the child
-            let new_f = new_g + new_h; // Total cost f = g + h
-            // Push a new node with a copy of the current path.
-            minHeap.push({ f: new_f, g: new_g, h: new_h, state: child, path: newPath.slice() });
-          }
-        }
-      }
-    }
-  }
-
-// Get position of blank (0) in state S.
-function get0(S) {
-for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-    if (S[i][j] === 0) return [i, j];
-    }
-}
-}
+  let best_cost = Infinity;
+  let best_path = [];
+  let minHeap = new MinHeap((a, b) => a.f - b.f);
+  let visited = new Set();
   
-  // ------------------- Run the Solver and Display Moves -------------------
-  function displaySolution() {
-    let c = 1;
-    let prev = null;
-    console.log("goalSequence"+goalSequence.length)
-    for (let step of goalSequence) {
-      const pos = get0(step);
-      if (!prev) {
-        prev = pos;
-        continue;
-      }
-      
-      let moveText = "";
-      if (prev[0] < pos[0]) {
-        moveText = `${c}. Swap up`;
-      } else if (prev[0] > pos[0]) {
-        moveText = `${c}. Swap down`;
-      } else if (prev[1] < pos[1]) {
-        moveText = `${c}. Swap left`;
-      } else if (prev[1] > pos[1]) {
-        moveText = `${c}. Swap right`;
-      }
-      
-      // Create a paragraph element and append it.
-      const p = document.createElement('p');
-      p.textContent = moveText;
-      solutionDiv.appendChild(p);
-      
-      prev = pos;
-      c++;
-    }
+  minHeap.push({ f: h(S), g: 0, h: h(S), state: S, path: [] });
+  visited.add(JSON.stringify(S));
+  
+  while (!minHeap.isEmpty()) {
+    const node = minHeap.pop();
+    // Debug log (optional)
+    console.log("Expanding node with h =", node.h);
+    let { f, g, h: heuristic, state: curr, path } = node;
+    let newPath = path.slice();
+    newPath.push(curr);
     
-    // Append final message.
-    const finalPara = document.createElement('p');
-    finalPara.textContent = "You have reached the goal!";
-    solutionDiv.appendChild(finalPara);
+    // Goal test.
+    if (heuristic === 0) {
+      if (g < best_cost) {
+        best_cost = g;
+        best_path = newPath;
+        return { best_cost, goalSequence: best_path };
+      }
+    } else {
+      if (g > best_cost) continue;
+      const neighbors = moveGen(curr);
+      for (let child of neighbors) {
+        const childStr = JSON.stringify(child);
+        if (!visited.has(childStr)) {
+          visited.add(childStr);
+          let new_g = g + 1;
+          let new_h = h(child);
+          let new_f = new_g + new_h;
+          minHeap.push({ f: new_f, g: new_g, h: new_h, state: child, path: newPath.slice() });
+        }
+      }
+    }
   }
+  return { best_cost, goalSequence: best_path };
+}
 
-document.getElementsByName('solution')[0].addEventListener('click', function(e) {
-    e.preventDefault();
-    solutionDiv = document.getElementById('solutionOutput');
-    console.log("Solution button clicked!");
-    // Clear previous content if any.
-    solutionDiv.innerHTML = "";
-    const header = document.createElement('p');
-    header.textContent = "Steps to solve the puzzle:";
-    solutionDiv.appendChild(header);
-    initialConfig = [1,null,3,4,2,5,7,8,6];
-    print2DArray(arrayToMatrix(initialConfig));
-    A_star(arrayToMatrix(initialConfig));
-    displaySolution();
-  });
+// Listen for messages from the main thread.
+self.onmessage = function(event) {
+  const { initialConfig } = event.data;
+  const matrix = arrayToMatrix(initialConfig);
+  const result = A_star(matrix);
+  self.postMessage(result);
+};

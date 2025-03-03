@@ -331,3 +331,91 @@ document.querySelector('button[name="new_game"]').addEventListener('click', func
   move_count=0;
   generateInitialConfig();
 });
+
+//------- AI SOLVER------------//
+solutionDiv = null;
+let goalSequence = []; // This will hold the sequence of moves (states)
+
+function arrayToMatrix(arr) {
+    let matrix = [];
+    for (let i = 0; i < 3; i++) {
+        matrix.push(arr.slice(i * 3, i * 3 + 3).map(val => val === null ? 0 : val));
+    }
+    return matrix;
+}
+
+// Get position of blank (0) in state S.
+function get0(S) {
+  for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+      if (S[i][j] === 0) return [i, j];
+      }
+  }
+  }
+
+// ------------------- Run the Solver and Display Moves -------------------
+function displaySolution() {
+  let c = 1;
+  let prev = null;
+  console.log("goalSequence"+goalSequence.length)
+  for (let step of goalSequence) {
+    const pos = get0(step);
+    if (!prev) {
+      prev = pos;
+      continue;
+    }
+    
+    let moveText = "";
+    if (prev[0] < pos[0]) {
+      moveText = `${c}. Swap up`;
+    } else if (prev[0] > pos[0]) {
+      moveText = `${c}. Swap down`;
+    } else if (prev[1] < pos[1]) {
+      moveText = `${c}. Swap left`;
+    } else if (prev[1] > pos[1]) {
+      moveText = `${c}. Swap right`;
+    }
+    
+    // Create a paragraph element and append it.
+    const p = document.createElement('p');
+    p.textContent = moveText;
+    solutionDiv.appendChild(p);
+    
+    prev = pos;
+    c++;
+  }
+  
+  // Append final message.
+  const finalPara = document.createElement('p');
+  finalPara.textContent = "You have reached the goal!";
+  solutionDiv.appendChild(finalPara);
+}
+
+// Set up the Web Worker.
+const worker = new Worker('./worker.js');
+
+worker.onmessage = function(event) {
+  const { best_cost, goalSequence: resultSequence } = event.data;
+  console.log("Minimum number of moves =", best_cost);
+  goalSequence = resultSequence;
+  displaySolution();
+};
+
+worker.onerror = function(error) {
+  console.error("Worker error:", error);
+};
+
+// When the "Solve" button is clicked, send the initial configuration to the worker.
+document.getElementsByName('solution')[0].addEventListener('click', function(e) {
+  e.preventDefault();
+  solutionDiv = document.getElementById('solutionOutput');
+  console.log("Solution button clicked!");
+  
+  // Clear previous content.
+  solutionDiv.innerHTML = "";
+  const header = document.createElement('p');
+  header.textContent = "Steps to solve the puzzle:";
+  solutionDiv.appendChild(header);
+   // Send the initial configuration to the worker.
+   worker.postMessage({ initialConfig });
+  });
