@@ -161,58 +161,143 @@ return mismatch;
 }
 
 // A_Star Search to solve the puzzle.
-function A_star(S) {
-    let best_cost = Infinity;
-    let best_path = [];
-    // Create a min heap with a comparator based on the f value (g + h)
-    let minHeap = new MinHeap((a, b) => a.f - b.f);
+// function A_star(S) {
+//     let best_cost = Infinity;
+//     let best_path = [];
+//     // Create a min heap with a comparator based on the f value (g + h)
+//     let minHeap = new MinHeap((a, b) => a.f - b.f);
     
-    // Global visited set to store stringified states
-    let visited = new Set();
+//     // Global visited set to store stringified states
+//     let visited = new Set();
     
-    // Push the initial node: f = h(S), g = 0, h = h(S), state = S, path = []
-    minHeap.push({ f: h(S), g: 0, h: h(S), state: S, path: [] });
-    visited.add(JSON.stringify(S));  // Mark the initial state as visited
+//     // Push the initial node: f = h(S), g = 0, h = h(S), state = S, path = []
+//     minHeap.push({ f: h(S), g: 0, h: h(S), state: S, path: [] });
+//     visited.add(JSON.stringify(S));  // Mark the initial state as visited
     
-    while (!minHeap.isEmpty()) {
-      // Pop the node with the lowest f value
-      const node = minHeap.pop();
-      let { f, g, h: heuristic, state: curr, path } = node;
-      // Make a copy of the current path and add the current state.
-      let newPath = path.slice();
-      newPath.push(curr);
+//     while (!minHeap.isEmpty()) {
+//       // Pop the node with the lowest f value
+//       const node = minHeap.pop();
+//       let { f, g, h: heuristic, state: curr, path } = node;
+//       // Make a copy of the current path and add the current state.
+//       let newPath = path.slice();
+//       newPath.push(curr);
       
-      // Goal test: if heuristic is 0, we have reached the goal.
-      if (heuristic === 0) {
-        if (g < best_cost) {
-          best_cost = g;
-          best_path = newPath;
-          goalSequence = best_path;
-          console.log("Minimum number of moves =", best_cost);
-          return;
-        }
-      } else {
-        // Prune paths that already cost more than our best solution.
-        if (g > best_cost) continue;
+//       // Goal test: if heuristic is 0, we have reached the goal.
+//       if (heuristic === 0) {
+//         if (g < best_cost) {
+//           best_cost = g;
+//           best_path = newPath;
+//           goalSequence = best_path;
+//           console.log("Minimum number of moves =", best_cost);
+//           return;
+//         }
+//       } else {
+//         // Prune paths that already cost more than our best solution.
+//         if (g > best_cost) continue;
         
-        // Expand neighbors
-        const neighbors = moveGen(curr);
-        for (let child of neighbors) {
-          // Convert the child state to a string
-          const childStr = JSON.stringify(child);
-          // Only process this child if it hasn't been visited
-          if (!visited.has(childStr)) {
-            visited.add(childStr);
-            let new_g = g + 1;       // Increment cost for the child node
-            let new_h = h(child);      // Compute heuristic for the child
-            let new_f = new_g + new_h; // Total cost f = g + h
-            // Push a new node with a copy of the current path.
-            minHeap.push({ f: new_f, g: new_g, h: new_h, state: child, path: newPath.slice() });
-          }
-        }
-      }
-    }
-  }
+//         // Expand neighbors
+//         const neighbors = moveGen(curr);
+//         for (let child of neighbors) {
+//           // Convert the child state to a string
+//           const childStr = JSON.stringify(child);
+//           // Only process this child if it hasn't been visited
+//           if (!visited.has(childStr)) {
+//             visited.add(childStr);
+//             let new_g = g + 1;       // Increment cost for the child node
+//             let new_h = h(child);      // Compute heuristic for the child
+//             let new_f = new_g + new_h; // Total cost f = g + h
+//             // Push a new node with a copy of the current path.
+//             minHeap.push({ f: new_f, g: new_g, h: new_h, state: child, path: newPath.slice() });
+//           }
+//         }
+//       }
+//     }
+//     console.log("Terminated!")
+//   }
+
+// Modified A_star with progress reporting and timeout
+let nodeCount = 0; // Global counter for progress tracking
+
+function A_star(S) {
+    return new Promise((resolve, reject) => {
+        nodeCount = 0; // Reset counter for each run
+        let best_cost = Infinity;
+        let best_path = [];
+        let minHeap = new MinHeap((a, b) => a.f - b.f);
+        let visited = new Map();
+        
+        // Increase timeout to 30 seconds for complex puzzles
+        const timeoutId = setTimeout(() => {
+            reject(new Error("Solution timeout (30s exceeded)"));
+        }, 30000);
+
+        minHeap.push({ f: h(S), g: 0, h: h(S), state: S, path: [] });
+        visited.set(JSON.stringify(S), 0);
+
+        const processNode = () => {
+            try {
+                if (minHeap.isEmpty()) {
+                    clearTimeout(timeoutId);
+                    resolve(false);
+                    return;
+                }
+
+                const node = minHeap.pop();
+                nodeCount++;
+                
+                const { g, h: heuristic, state: curr, path } = node;
+                const currStr = JSON.stringify(curr);
+
+                // Prune if better path exists
+                if (g > visited.get(currStr)) {
+                    setTimeout(processNode, 0);
+                    return;
+                }
+
+                const newPath = [...path, curr];
+
+                // Goal check
+                if (heuristic === 0) {
+                    clearTimeout(timeoutId);
+                    goalSequence = newPath;
+                    resolve(true);
+                    return;
+                }
+
+                // Generate and process neighbors
+                const neighbors = moveGen(curr);
+                for (const child of neighbors) {
+                    const childStr = JSON.stringify(child);
+                    const new_g = g + 1;
+                    
+                    if (!visited.has(childStr) || new_g < visited.get(childStr)) {
+                        visited.set(childStr, new_g);
+                        const new_h = h(child);
+                        minHeap.push({
+                            f: new_g + new_h,
+                            g: new_g,
+                            h: new_h,
+                            state: child,
+                            path: newPath
+                        });
+                    }
+                }
+
+                // Yield control every 100 nodes
+                if (nodeCount % 100 === 0) {
+                    setTimeout(processNode, 0);
+                } else {
+                    processNode();
+                }
+            } catch (err) {
+                clearTimeout(timeoutId);
+                reject(err);
+            }
+        };
+
+        setTimeout(processNode, 0);
+    });
+}
 
 // Get position of blank (0) in state S.
 function get0(S) {
@@ -261,17 +346,55 @@ for (let i = 0; i < 3; i++) {
     solutionDiv.appendChild(finalPara);
   }
 
-document.getElementsByName('solution')[0].addEventListener('click', function(e) {
-    e.preventDefault();
-    solutionDiv = document.getElementById('solutionOutput');
-    console.log("Solution button clicked!");
-    // Clear previous content if any.
-    solutionDiv.innerHTML = "";
-    const header = document.createElement('p');
-    header.textContent = "Steps to solve the puzzle:";
-    solutionDiv.appendChild(header);
-    initialConfig = [1,null,3,4,2,5,7,8,6];
-    print2DArray(arrayToMatrix(initialConfig));
-    A_star(arrayToMatrix(initialConfig));
-    displaySolution();
-  });
+// document.getElementsByName('solution')[0].addEventListener('click', function(e) {
+//     e.preventDefault();
+//     solutionDiv = document.getElementById('solutionOutput');
+//     console.log("Solution button clicked!");
+//     // Clear previous content if any.
+//     solutionDiv.innerHTML = "";
+//     const header = document.createElement('p');
+//     header.textContent = "Steps to solve the puzzle:";
+//     solutionDiv.appendChild(header);
+//     //initialConfig = [1,null,3,4,2,5,7,8,6];
+//     print2DArray(arrayToMatrix(initialConfig));
+//     A_star(arrayToMatrix(initialConfig));
+//     displaySolution();
+//   });
+
+// Updated event handler with proper progress tracking
+document.getElementsByName('solution')[0].addEventListener('click', async function(e) {
+  e.preventDefault();
+  const button = e.target;
+  const originalText = button.innerHTML;
+  solutionDiv = document.getElementById('solutionOutput');
+  
+  try {
+      button.innerHTML = "⏳ Solving...";
+      button.disabled = true;
+      solutionDiv.innerHTML = `<p>🔍 Analyzing puzzle... <span id="progress">0</span> states explored</p>`;
+
+      // Update progress every 500ms
+      const progressSpan = document.getElementById('progress');
+      const progressUpdater = setInterval(() => {
+          if (progressSpan) progressSpan.textContent = nodeCount.toLocaleString();
+      }, 500);
+
+      const matrixInitial = arrayToMatrix(initialConfig.map(x => x === null ? 0 : x));
+      const success = await A_star(matrixInitial);
+
+      clearInterval(progressUpdater);
+      solutionDiv.innerHTML = "";
+      
+      if (success) {
+          displaySolution();
+      } else {
+          solutionDiv.innerHTML = "<p>❌ No valid solution found</p>";
+      }
+  } catch (error) {
+      console.error("Solver error:", error);
+      solutionDiv.innerHTML = `<p>⚠️ ${error.message}</p>`;
+  } finally {
+      button.innerHTML = originalText;
+      button.disabled = false;
+  }
+});
