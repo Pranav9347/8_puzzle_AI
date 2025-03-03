@@ -324,6 +324,8 @@ try {
     } else {
         solutionDiv.innerHTML = "<p>❌ No valid solution found</p>";
     }
+     // Scroll down to the solution output smoothly
+     document.getElementById('solutionOutput').scrollIntoView({ behavior: 'smooth', block: 'end' });
 } catch (error) {
     console.error("Solver error:", error);
     solutionDiv.innerHTML = `<p>⚠️ ${error.message}</p>`;
